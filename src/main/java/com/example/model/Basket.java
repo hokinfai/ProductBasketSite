@@ -25,7 +25,7 @@ public class Basket {
 	private String shipTo;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "basket")
+	@JoinColumn(name = "basket_id")
 	private List<BasketItem> productList;
 
 	public Basket() {

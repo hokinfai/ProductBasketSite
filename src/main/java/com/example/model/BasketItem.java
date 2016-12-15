@@ -1,33 +1,32 @@
 package com.example.model;
 
-import java.io.Serializable;
-
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-public class BasketItem implements Serializable {
+public class BasketItem {
 
 	@EmbeddedId
-	private BasketItemPK basketItemPK = new BasketItemPK();
+	private BasketItemPK basketItemPK;
 
 	@MapsId("basketId")
 	@ManyToOne
-	@PrimaryKeyJoinColumn(name = "basket_id")
+	@JoinColumn(name = "basket_id")
 	private Basket basket;
 
 	@MapsId("productId")
 	@ManyToOne
-	@PrimaryKeyJoinColumn(name = "product_id")
+	@JoinColumn(name = "product_id")
 	private Product product;
 
 	private int quantity;
 
 	public BasketItem() {
+		basketItemPK = new BasketItemPK();
 	}
 
 	public int getQuantity() {
@@ -44,6 +43,22 @@ public class BasketItem implements Serializable {
 
 	public void setBasketItemPK(BasketItemPK basketItemPK) {
 		this.basketItemPK = basketItemPK;
+	}
+
+	public Basket getBasket() {
+		return basket;
+	}
+
+	public void setBasket(Basket basket) {
+		this.basket = basket;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	@Override

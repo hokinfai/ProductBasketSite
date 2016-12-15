@@ -28,7 +28,7 @@ public class Product {
 	private String description;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "product")
+	@JoinColumn(name = "product_id")
 	private List<BasketItem> basketList;
 
 	public Product() {

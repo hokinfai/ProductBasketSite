@@ -1,7 +1,7 @@
 package com.example.view;
 
-import com.example.dao.BasketImp;
-import com.example.dao.BasketService;
+import java.util.List;
+
 import com.example.dao.ProductImp;
 import com.example.dao.ProductService;
 import com.example.dao.SingleFactory;
@@ -13,20 +13,79 @@ public class Main {
 
 	public static void main(String[] args) {
 		ProductService service = new ProductImp();
-		// BasketService basSer = new BasketImp();
+
+		// CODE THAT LINK PRODUCT AND BASKET TOGETHER
+
 		// Product product1 = new Product("Coke", 1.0, 0.4, "Drink", 100,
 		// "Soft drink");
-		// Product product2 = new Product("Red Bull", 1.89, 0.8, "Drink", 300,
-		// "Energy drink");
-		Basket bk = new Basket("Alan", "Leeds");
+		// Basket bk = new Basket("Alan", "Leeds");
+		// BasketItemPK bipk = new BasketItemPK();
 		// BasketItem bi = new BasketItem();
-		// bi.setQuantity(5);
-		// product1.addBasket(bi);
-		// product2.addBasket(bi);
-		// order1.addProduct(bi);
+		// bi.setBasketItemPK(bipk);
+		// bi.setQuantity(50);
+		// bi.setBasket(bk);
+		// bi.setProduct(product1);
 		// service.save(product1);
+		// service.save(bk);
+		// service.save(bi);
+
+		// CODE THAT ADD PRODUCT TO BASKET
+
+		// Product product2 = new Product("Water", 0.89, 0.8, "Drink", 300,
+		// "Water drink");
+		// Basket bk = service.getBasket(2);
+		// BasketItemPK bipk = new BasketItemPK();
+		// BasketItem bi = new BasketItem();
+		// bi.setBasketItemPK(bipk);
+		// bi.setQuantity(1);
+		// bi.setBasket(bk);
+		// bi.setProduct(product2);
+		// service.save(bk);
 		// service.save(product2);
-		service.save(bk);
+		// service.save(bi);
+
+		// CODE THAT INCREASE THE QUANTITY OF EXISTING PRODUCT
+
+		Basket bk = service.getBasket(2);
+		List<BasketItem> bi = bk.getProductList();
+		Product product = service.getSingleProduct(5);
+		for (BasketItem b : bk.getProductList()) {
+			if ((b.getProduct().getProductName()).equals(product
+					.getProductName())) {
+				System.out.println(b.getQuantity());
+			}
+		}
+		// System.out.println(bt.getQuantity());
+		// int quantity = 0;
+		// Basket bk = service.getBasket(2);
+		//
+		// for (BasketItem b : bk.getProductList()) {
+		// if ((b.getProduct().getProductName()).equals(product
+		// .getProductName()))
+		// quantity = b.getQuantity();
+		// }
+		//
+		// BasketItemPK bipk = new BasketItemPK();
+		// BasketItem bi = new BasketItem();
+		// bi.setBasketItemPK(bipk);
+		// bi.setQuantity(quantity++);
+		// bi.setBasket(bk);
+		// bi.setProduct(product);
+		// service.save(bk);
+		// service.save(product);
+		// service.save(bi);
+
+		// System.out.println(pro.toString());
+		// Basket bk1 = new Basket("Kirana", "Manchester");
+		// Product product3 = new Product("Water", 0.89, 0.8, "Drink", 300,
+		// "Water drink");
+		// bk1.addProduct(bi);
+		// product3.addBasket(bi);
+		// product1.addBasket(bi);
+		// bk.addProduct(bi);
+
+		// service.save(product3);
+
 		// service.save(bi);
 		// List<Product> allItem = service.getAllProduct();
 		// for (Product p : allItem)
