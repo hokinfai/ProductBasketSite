@@ -8,7 +8,7 @@ import com.example.model.Product;
 public interface BasketService {
 	public void save(Object object);
 
-	public List<Product> getAllBasketProduct(String id);
+	public List<Product> getAllBasketProduct(int id);
 
-	public Basket getBasket(String id);
+	public Basket getBasket(int id);
 }

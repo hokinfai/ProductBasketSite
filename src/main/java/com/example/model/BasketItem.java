@@ -63,8 +63,11 @@ public class BasketItem {
 
 	@Override
 	public String toString() {
-		return "BasketItem [basket=" + basket + ", product=" + product
-				+ ", quantity=" + quantity + "]";
+		return "BasketItem [basketItemPK=" + basketItemPK + ", basket="
+				+ basket + ", product=" + product + ", quantity=" + quantity
+				+ "]";
 	}
+
+	
 
 }

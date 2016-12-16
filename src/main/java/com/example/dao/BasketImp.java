@@ -26,7 +26,7 @@ public class BasketImp implements BasketService {
 		this.em.getTransaction().commit();
 	}
 
-	public List<Product> getAllBasketProduct(String id) {
+	public List<Product> getAllBasketProduct(int id) {
 		List<Product> allItem = new ArrayList<Product>();
 		Query query = this.em
 				.createQuery("From Basket as basket where basket.id = ?");
@@ -35,7 +35,7 @@ public class BasketImp implements BasketService {
 		return allItem;
 	}
 
-	public Basket getBasket(String id) {
+	public Basket getBasket(int id) {
 		Query query = this.em
 				.createQuery("From Basket as basket where basket.id = ?");
 		query.setParameter(0, id);

@@ -54,6 +54,7 @@ public class Startup extends HttpServlet {
 		}
 		out.println("</table></BODY>");
 		out.println("</HTML>");
+		SingleFactory.close();
 
 	}
 

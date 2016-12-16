@@ -68,8 +68,11 @@ public class Basket {
 
 	@Override
 	public String toString() {
-		return "Basket [id=" + basketId + ", receiverName=" + receiverSide
-				+ ", shipTo=" + shipTo + ", productList=" + productList + "]";
+		return "Basket [basketId=" + basketId + ", receiverSide="
+				+ receiverSide + ", shipTo=" + shipTo + ", productList="
+				+ productList + "]";
 	}
+
+
 
 }
