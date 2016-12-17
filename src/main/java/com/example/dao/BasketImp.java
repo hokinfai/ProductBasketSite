@@ -10,10 +10,10 @@ import com.example.model.Basket;
 import com.example.model.Product;
 
 public class BasketImp implements BasketService {
-	EntityManager em;
+	private EntityManager em;
 
 	public BasketImp() {
-		em = SingleFactory.getEM();
+		this.em = SingleFactory.getEM();
 	}
 
 	public BasketImp(EntityManager em) {

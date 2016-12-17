@@ -17,6 +17,7 @@ import com.example.dao.BasketImp;
 import com.example.dao.BasketService;
 import com.example.dao.ProductImp;
 import com.example.dao.ProductService;
+import com.example.dao.SingleFactory;
 import com.example.model.Basket;
 import com.example.model.BasketItem;
 import com.example.model.Product;
@@ -46,37 +47,30 @@ public class BasketPage extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		int id = Integer.parseInt(request.getParameter("productID"));
-		System.out.println(id);
 		ProductService service = new ProductImp();
 		BasketService basSer = new BasketImp();
-
 		bk = basSer.getBasket(2);
 		Product product = service.getSingleProduct(id);
-		System.out.println("-------------------");
 		List<BasketItem> bi = bk.getProductList();
 		boolean inBasket = false;
 		for (BasketItem b : bi) {
+			System.out.println(b.getProduct().getProductName());
 			if ((b.getProduct().getProductName()).equals(product
 					.getProductName())) {
 				System.out.println(b.getQuantity());
 				b.setQuantity(b.getQuantity() + 1);
-				service.save(product);
-				service.save(bk);
 				service.save(b);
 				inBasket = true;
 			}
 		}
-		if (inBasket == false) {
+		if (!inBasket) {
 			BasketItem newbi = new BasketItem();
+			bi.add(newbi);
 			newbi.setProduct(product);
 			newbi.setBasket(bk);
 			newbi.setQuantity(1);
-			service.save(product);
-			service.save(bk);
 			service.save(newbi);
 		}
-		System.out.println("________________________");
-
 		PrintWriter out = response.getWriter();
 		out.println("<HTML>");
 		out.println("<HEAD>");
@@ -84,7 +78,7 @@ public class BasketPage extends HttpServlet {
 		out.println("</HEAD>");
 		out.println("<BODY>");
 		out.println("<table border=\" 1px\"><tr><th>Name</th><th>Price</th><th>Category</th><th>Quantity</th><th>Total</th></tr>");
-		int total = 0;
+		double total = 0;
 		for (BasketItem b : bi) {
 			total += b.getProduct().getUnitPrice() * b.getQuantity();
 			out.println("<tr><td>" + b.getProduct().getProductName()
@@ -100,6 +94,5 @@ public class BasketPage extends HttpServlet {
 				+ "<a href =\"/ProductBasketSite/Home\">Home</a></BODY>");
 
 		out.println("</HTML>");
-
 	}
 }

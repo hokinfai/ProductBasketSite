@@ -20,6 +20,7 @@ public class SingleFactory {
 	}
 
 	public static void close() {
-		emf.close();
+		if (em != null)
+			em.close();
 	}
 }

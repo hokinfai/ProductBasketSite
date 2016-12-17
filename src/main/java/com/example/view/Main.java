@@ -31,12 +31,10 @@ public class Main {
 
 		// CODE THAT ADD PRODUCT TO BASKET
 
-		// Product product2 = new Product("Water", 0.89, 0.8, "Drink", 300,
-		// "Water drink");
+		// Product product2 = new Product("Coffee", 0.99, 0.8, "Drink", 30,
+		// "Cold drink");
 		// Basket bk = service.getBasket(2);
-		// BasketItemPK bipk = new BasketItemPK();
 		// BasketItem bi = new BasketItem();
-		// bi.setBasketItemPK(bipk);
 		// bi.setQuantity(1);
 		// bi.setBasket(bk);
 		// bi.setProduct(product2);
@@ -44,27 +42,24 @@ public class Main {
 		// service.save(product2);
 		// service.save(bi);
 
+		// CODE THAT ONLY ADD PRODUCT
+
+		Product product = new Product("beer", 4.99, 3.8, "Alcohol", 30,
+				"Adult drink");
+		service.save(product);
+
 		// CODE THAT INCREASE THE QUANTITY OF EXISTING PRODUCT
 
-		Basket bk = service.getBasket(2);
-		List<BasketItem> bi = bk.getProductList();
-		Product product = service.getSingleProduct(5);
-		for (BasketItem b : bk.getProductList()) {
-			if ((b.getProduct().getProductName()).equals(product
-					.getProductName())) {
-				System.out.println(b.getQuantity());
-			}
-		}
-		// System.out.println(bt.getQuantity());
-		// int quantity = 0;
 		// Basket bk = service.getBasket(2);
-		//
+		// List<BasketItem> bi = bk.getProductList();
+		// Product product = service.getSingleProduct(5);
 		// for (BasketItem b : bk.getProductList()) {
 		// if ((b.getProduct().getProductName()).equals(product
-		// .getProductName()))
-		// quantity = b.getQuantity();
+		// .getProductName())) {
+		// System.out.println(b.getQuantity());
 		// }
-		//
+		// }
+
 		// BasketItemPK bipk = new BasketItemPK();
 		// BasketItem bi = new BasketItem();
 		// bi.setBasketItemPK(bipk);
